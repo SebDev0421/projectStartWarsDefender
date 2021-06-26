@@ -8,4 +8,7 @@ interface ISensor {
 
 type ContextType = {
   sensors: ISensor[],
+  showDrawer: boolean,
+  openDrawer: () => void,
+  closeDrawer: () => void,
 }

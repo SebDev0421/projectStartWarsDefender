@@ -1,7 +1,10 @@
 import { createContext } from "react";
 
 const contextDefaultValues: ContextType = {
-  sensors: []
+  sensors: [],
+  showDrawer: false,
+  openDrawer: () => {},
+  closeDrawer: () => {}
 }
 
 const battleContext = createContext<ContextType>(contextDefaultValues);

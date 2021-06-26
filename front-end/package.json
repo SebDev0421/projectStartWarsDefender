@@ -21,6 +21,7 @@
     "react-icons": "^4.2.0",
     "react-if": "^4.0.1",
     "react-query": "^3.17.2",
+    "react-router-dom": "^5.2.0",
     "react-scripts": "4.0.3",
     "react-toastify": "^7.0.4",
     "typescript": "^4.1.2",
@@ -53,6 +54,7 @@
   "devDependencies": {
     "@commitlint/cli": "^12.1.4",
     "@commitlint/config-conventional": "^12.1.4",
+    "@types/react-router-dom": "^5.1.7",
     "autoprefixer": "^9.8.6",
     "husky": "^6.0.0",
     "postcss": "^7.0.36",
