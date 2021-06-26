@@ -6,6 +6,7 @@ const _Schema = new Schema({
 		type: String,
 		required: true,
 	},
+  date:Date
 });
 
 const model = mongoose.model("sensors", _Schema);
