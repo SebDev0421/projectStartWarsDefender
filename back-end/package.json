@@ -5,9 +5,9 @@
   "main": "index.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-    "start":"nodemon index.js"
+    "start": "nodemon index.js"
   },
-  "author": "\"Arturito team\"",
+  "author": "\"Artudito team\"",
   "license": "MIT",
   "dependencies": {
     "express": "^4.17.1",
