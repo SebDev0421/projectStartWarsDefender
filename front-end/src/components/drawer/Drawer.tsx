@@ -5,7 +5,6 @@ import { MouseEvent } from "react";
 import { useState } from "react";
 import { Drawer as DrawerMU } from "@material-ui/core";
 import { List } from "@material-ui/core";
-import { Button } from "@material-ui/core";
 import { Divider } from "@material-ui/core";
 import { ListItem } from "@material-ui/core";
 import { ListItemIcon } from "@material-ui/core";
@@ -70,7 +69,6 @@ const Drawer = () => {
   return ( 
     <div>
       <Fragment>
-        <Button onClick={()=>setOpenDrawer(true)}>Abrir drawer</Button>
         <DrawerMU anchor={'right'} open={openDrawer} onClose={toggleDrawer(false)} >
           {list()}
         </DrawerMU>

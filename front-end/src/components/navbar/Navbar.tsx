@@ -1,82 +1,53 @@
 import React from "react";
-import { Fragment } from "react";
-import { KeyboardEvent } from "react";
-import { MouseEvent } from "react";
-import { useState } from "react";
-import { Drawer as DrawerMU } from "@material-ui/core";
-import { List } from "@material-ui/core";
-import { Button } from "@material-ui/core";
-import { Divider } from "@material-ui/core";
-import { ListItem } from "@material-ui/core";
-import { ListItemIcon } from "@material-ui/core";
-import { ListItemText } from "@material-ui/core";
+import { AppBar } from "@material-ui/core";
+import { Toolbar } from "@material-ui/core";
+import { IconButton } from "@material-ui/core";
+import { Typography } from "@material-ui/core";
 import { makeStyles } from "@material-ui/core/styles";
-import InboxIcon from '@material-ui/icons/MoveToInbox';
-import MailIcon from '@material-ui/icons/Mail';
+import { createStyles } from "@material-ui/core/styles";
+import { Theme } from "@material-ui/core/styles";
+import { VscMenu } from "react-icons/all";
+import Logo from "../../assets/imgs/logo-white.png"
 
-export interface DrawerProps {
-  
-}
-
-const useStyles = makeStyles({
-  list: {
-    width: 250,
-  },
-  fullList: {
-    width: 'auto',
-  }
-})
+const useStyles = makeStyles((theme: Theme) =>
+  createStyles({
+    root: {
+      flexGrow: 1,
+    },
+    menuButton: {
+      marginRight: theme.spacing(2),
+    },
+    title: {
+      flexGrow: 1,
+      color: 'white',
+      letterSpacing: '2px',
+      margin: '10px'
+    },
+  }),
+);
  
-const Drawer = () => {
+const Navbar = () => {
   const classes = useStyles();
-  const [ openDrawer, setOpenDrawer ] = useState<boolean>(false);
-
-  const toggleDrawer = (open: boolean ) => (event: KeyboardEvent | MouseEvent ) => {
-    if(
-      event.type === "keydown" && 
-      ((event as KeyboardEvent).key === "Tab" || (event as KeyboardEvent).key === "Shift")
-    ){
-      return;
-    }
-    setOpenDrawer(open)
-  }
-
-  const list = () => (
-    <div
-      className={classes.list}
-      role="presentation"
-      onClick={toggleDrawer(false)}
-      onKeyDown={toggleDrawer(false)}
-    >
-      <List>
-        {['Inbox', 'Starred', 'Send email', 'Drafts'].map((text, index) => (
-          <ListItem button key={text}>
-            <ListItemIcon>{index % 2 === 0 ? <InboxIcon /> : <MailIcon />}</ListItemIcon>
-            <ListItemText primary={text} />
-          </ListItem>
-        ))}
-      </List>
-      <Divider />
-      <List>
-        {['All mail', 'Trash', 'Spam'].map((text, index) => (
-          <ListItem button key={text}>
-            <ListItemIcon>{index % 2 === 0 ? <InboxIcon /> : <MailIcon />}</ListItemIcon>
-            <ListItemText primary={text} />
-          </ListItem>
-        ))}
-      </List>
-    </div>
-  )
+  
   return ( 
-    <div>
-      <Fragment>
-        <Button onClick={()=>setOpenDrawer(true)}>Abrir drawer</Button>
-        <DrawerMU anchor={'right'} open={openDrawer} onClose={toggleDrawer(false)} >
-          {list()}
-        </DrawerMU>
-      </Fragment>
+    <div className={classes.root}>
+      <AppBar position="fixed" color="transparent" elevation={0}>
+        <Toolbar>
+          <IconButton edge="start" className={classes.menuButton} color="inherit" aria-label="logo">
+            <div className="w-20">
+              <img src={Logo} alt="logo" className="w-full" />
+            </div>
+          </IconButton>
+          <Typography variant="h4" className={classes.title}>
+            Artudito
+          </Typography>
+          <IconButton edge="end" className={classes.menuButton} color="inherit" aria-label="menu">
+            <VscMenu color="white" />
+          </IconButton>
+        </Toolbar>
+      </AppBar>
     </div>
    );
 }
  
-export default Drawer;
+export default Navbar;
