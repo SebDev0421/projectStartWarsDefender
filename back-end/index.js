@@ -7,6 +7,7 @@ const express = require("express"),
 	Sensors = require("./Routes/Sensor.Route"),
 	router = require("./network/router")
 
+
 app.set("port", port);
 
 app.use(morgan("dev"));
