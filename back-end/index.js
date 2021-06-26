@@ -2,11 +2,16 @@
 
 const express = require("express"),
 	app = express(),
+	const server = require('http').Server(app),
 	port = process.env.PORT || 3000,
 	morgan = require("morgan"),
 	Sensors = require("./Routes/Sensor.Route"),
-	router = require("./network/router")
+	router = require("./network/router"),
+	const socket = require("./socket"),
+	const ip = require("ip")
 
+
+socket.connect(server);
 app.set("port", port);
 
 app.use(morgan("dev"));
@@ -31,5 +36,5 @@ app.use(express.json());
 app.use("/api/", router);
 
 app.listen(app.get("port"), () => {
-	console.log("Server running in port : ", app.get("port"));
+	console.log("App is running on: ","http://"+ ip.address() +":"+ app.get("port"));
 });

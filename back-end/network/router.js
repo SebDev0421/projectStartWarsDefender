@@ -1,4 +1,3 @@
-const express = require("express");
 const attacks = require("../components/attacks/network");
 const sensors = require("../components/sensors/network");
 

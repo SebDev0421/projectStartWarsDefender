@@ -1,6 +1,7 @@
 const r = "2021-06-01 08:00:01,(Bomber|122),(-|99),(-|0)";
 const splitted = r.split(",");
 const parsed = {data:[], date:''}
+const ip = require("ip")
 splitted.forEach((data, index)=> {
   if(index ===0){
     parsed.date = data
@@ -11,9 +12,11 @@ splitted.forEach((data, index)=> {
   }
 })
 
+
 console.log(
   "splitted", splitted,
-  "data", parsed
+  "data", parsed,
+  ip.address()
   // "date", date, 
   // "utilData", parsed
 );
