@@ -1,7 +1,7 @@
-module.exports = (sensonrsString='') => {
+module.exports = (sensorsString='') => {
   // const r = "2021-06-01 08:00:01,(Bomber|122),(-|99),(-|0)";
-  const splitted = sensonrsString.split(",");
-  const parsed = {data:[], date:''}
+  const splitted = sensorsString.split(",");
+  const parsed = {data:[], date:'', originalData:sensorsString}
   splitted.forEach((data, index)=> {
     if(index ===0){
       parsed.date = data
@@ -11,5 +11,5 @@ module.exports = (sensonrsString='') => {
       parsed.data.push({name:sensorName, value:sensorValue})
     }
   })
-  return parsed || {data:[], date:''};
+  return parsed;
 }

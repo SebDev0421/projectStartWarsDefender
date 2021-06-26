@@ -4,7 +4,8 @@ const express = require("express"),
 	app = express(),
 	port = process.env.PORT || 3000,
 	morgan = require("morgan"),
-	Sensors = require("./Routes/Sensor.Route");
+	Sensors = require("./Routes/Sensor.Route"),
+	router = require("./network/router")
 
 app.set("port", port);
 
@@ -27,7 +28,7 @@ app.use((req, res, next) => {
 
 app.use(express.json());
 
-app.use("/api/battle", Sensors);
+app.use("/api/", router);
 
 app.listen(app.get("port"), () => {
 	console.log("Server running in port : ", app.get("port"));
