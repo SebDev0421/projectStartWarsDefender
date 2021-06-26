@@ -17,6 +17,6 @@ router.get("/", getDataMiddleware, (req, res) => {});
 
 router.post("/", getDataMiddleware, async(req, res) => {
 	const { data, date, originalData } = req;
-  const {success} = await controller.saveDataSensors(originalData);
+  const {success} = await controller.saveDataSensors(originalData, date);
   // controller.
 });
