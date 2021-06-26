@@ -1,0 +1,1 @@
+export const GET_SENSORS = "GET_SENSORS";
