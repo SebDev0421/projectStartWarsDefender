@@ -1,11 +1,25 @@
 {
-  "name": "project-star-wars-defender",
-  "version": "0.1.0",
-  "private": true,
+  "name": "projectstartwarsdefender",
+  "version": "1.0.0",
+  "description": "Project for the sukuani hackaton",
+  "main": "index.js",
   "dependencies": {},
   "devDependencies": {
     "@commitlint/cli": "^12.1.4",
     "@commitlint/config-conventional": "^12.1.4",
     "husky": "^6.0.0"
-  }
+  },
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/SebDev0421/projectStartWarsDefender.git"
+  },
+  "author": "",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/SebDev0421/projectStartWarsDefender/issues"
+  },
+  "homepage": "https://github.com/SebDev0421/projectStartWarsDefender#readme"
 }
