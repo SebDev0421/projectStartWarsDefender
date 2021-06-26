@@ -7,7 +7,8 @@ app.get("/", (req, res) => {
 	res.json({ status: "online" });
 });
 
-app.get("/", (req, res) => {
+app.post("/", (req, res) => {
+  console.log('Ok', req);
 	res.json({ status: "online" });
 });
 
