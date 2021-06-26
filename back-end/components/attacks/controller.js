@@ -2,7 +2,7 @@ const Model = require('../Model')
 const sensrorsDataParser = require('../../middlewares/sensrorsDataParser')
 
 async function getAttacksByPagination(page=0, limit=10){
-  const status = {data:[], success=false, date:''}
+  const status = {data:[], success:false, date:''}
   await Model.find({})
   .skip(page * limit)
   .limit(limit)

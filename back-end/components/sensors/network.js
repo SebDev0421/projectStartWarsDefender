@@ -13,10 +13,14 @@ const getDataMiddleware = (req, res, next) => {
 	next();
 };
 
-router.get("/", getDataMiddleware, (req, res) => {});
-
-router.post("/", getDataMiddleware, async(req, res) => {
-	const { data, date, originalData } = req;
-  const {success} = await controller.saveDataSensors(originalData, date);
-  // controller.
+router.get("/", getDataMiddleware, (req, res) => {
+	res.send("Holaa")
 });
+
+router.post("/", getDataMiddleware, async (req, res) => {
+	const { data, date, originalData } = req;
+	const { success } = await controller.saveDataSensors(originalData, date);
+	// controller.
+});
+
+module.exports = router;
