@@ -49,7 +49,6 @@
     url(http://www.script-tutorials.com/demos/360/images/stars.png) repeat top
     center;
   z-index: 0;
-  border-radius: 20px;
 }
 
 .twinkling {
@@ -57,7 +56,6 @@
     url(http://www.script-tutorials.com/demos/360/images/twinkling.png) repeat
     top center;
   z-index: 1;
-  border-radius: 20px;
   -moz-animation: move-twink-back 200s linear infinite;
   -ms-animation: move-twink-back 200s linear infinite;
   -o-animation: move-twink-back 200s linear infinite;
