@@ -3,9 +3,15 @@ const express = require("express");
 const router = express.Router();
 const controller = require("./controller");
 const sensorsDataParser = require("../../middlewares/sensrorsDataParser");
+const Alerts = require('../Model/Alerts');
+const Battle = require('../Model/Battle');
+
 let sample = 0;
 let sensorsAlerts = []
 
+
+
+const sendAlert = require("../../functions/sendAlert")
 
 const getDataMiddleware = (req, res, next) => {
 	const { data: sensors } = req.body;
@@ -26,6 +32,7 @@ router.post("/", async (req, res) => {
 	const { data } = req.body;
 	//const { success} = await controller.saveDataSensors(originalData, date);
 	const parsed = { data: [], date: ""};
+
 	
 	sample += 1;
 
@@ -33,7 +40,9 @@ router.post("/", async (req, res) => {
 	const parseout = await sensorsDataParser(data);
 	const timeShow = parseout[0];
 
-	parseout.forEach((data, index) => {
+	const { success} = await controller.saveDataSensors(data, timeShow);
+
+	parseout.forEach(async (data, index) => {
 		if (index === 0) {
 			parsed.date = data;
 		} else {
@@ -48,24 +57,25 @@ router.post("/", async (req, res) => {
 			})
 
 			if(sensorSave.length === 0){
-				//console.log('testing')
+
 
 				//create internal alerts
 				if (sensorValue > 100) {
-				//detect possible enemy
-				//send index
-				//sendAlerts(timeShow, "1", index, sensorValue, sensorName,sample+30);
+		
 				sensorsAlerts.push({timeShow, type:"1", index, sensorValue, sensorName,sample: sample+30})
-        //console.log(sample)
-				//save alerts
-			} else if (sensorValue === 0) {
+
+				const alerts = new Alerts({date: timeShow,sensor: index,value: sensorValue ,type:"1", ship:sensorName})
+				await alerts.save()
+
+        	} else if (sensorValue === 0) {
 				//detect fail in sensor
 
 				//entry in monitoring 2 seconds
-				//sendAlerts(timeShow, "2", index, sensorValue, sensorName,sample+2);sensorsAlerts.push({timeShow, "1", index, sensorValue, sensorName,sample+30})
 				sensorsAlerts.push({timeShow, type: "2", index, sensorValue, sensorName,smaple: sample+32})
 				//save alerts
 				//send index
+				const alerts = new Alerts({date: timeShow,sensor: index,value: sensorValue ,type:"2", ship:sensorName})
+				await alerts.save() 
 			}
 			}else{
 				
@@ -92,6 +102,7 @@ router.post("/", async (req, res) => {
 
 				// emit alert for time
 				if (sample === sensorSave[0].sample){
+					sendAlert(timeShow, sensorSave[0].type, index, sensorValue, sensorName)
 					console.log('send alert ',sensorSave[0].type)
 					sensorsAlerts= sensorsAlerts.filter((el,_index) => {
 						return(
@@ -107,7 +118,9 @@ router.post("/", async (req, res) => {
 	console.log(sensorsAlerts)
 
 	res.json({ sample: sample });
-	// controller.
 });
+
+
+
 
 module.exports = router;
