@@ -3,7 +3,6 @@ import { useContext } from "react";
 import { Grid } from "@material-ui/core"; 
 
 import PanelScanner from "../components/panelScanner/PanelScanner";
-import PanelControl from "../components/panelControl/PanelControlBottom";
 import PanelControlLeft from "../components/panelControl/PanelControlLeft";
 import NavBar from "../components/navbar/Navbar";
 import Background from "../components/background/background";
@@ -36,7 +35,7 @@ const HomePage = () => {
               </div>
                 <PanelScanner />
               <div className="h-1/5">
-                <PanelControl />
+                <br />
               </div>
             </div>
           </Grid>

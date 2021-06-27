@@ -11,8 +11,6 @@ import BattleContext from "../../context/battle/battleContext";
 const PanelControlLeft = ({ status }: any ) => {
   const battleContext = useContext(BattleContext);
   const { sensors, alarmSensor  } = battleContext;
-  console.log('status', status);
-  console.log('alarmsen', alarmSensor);
   let statusCircle = status && !alarmSensor ? "status-bad ": !status && alarmSensor ? "status-report" : "status-ok"; 
   return (
     <div className="px-2 flex justify-around flex-col h-full">
