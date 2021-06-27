@@ -4,6 +4,7 @@ const router = express.Router();
 const controller = require("./controller");
 const sensorsDataParser = require("../../middlewares/sensrorsDataParser");
 const sendAlert = require("../../functions/sendAlert")
+const {socket} = require("../../socket")
 
 const getDataMiddleware = (req, res, next) => {
 	const { data: sensors } = req.body;
@@ -22,6 +23,7 @@ router.get("/", getDataMiddleware, (req, res) => {
 
 router.post("/", getDataMiddleware, async (req, res) => {
 	const { data, date, originalData } = req;
+	socket.io.emit("data", {data, date});
 	const actives =  [""];
 	// [{
 	// 	sensorNumber: 0,

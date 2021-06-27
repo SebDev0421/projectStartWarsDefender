@@ -45,9 +45,3 @@ app.use((req, res, next) => {
 
 router(app);
 
-// app.listen(app.get("port"), () => {
-// 	console.log(
-// 		"App is running on: ",
-// 		"http://" + ip.address() + ":" + app.get("port")
-// 	);
-// });
