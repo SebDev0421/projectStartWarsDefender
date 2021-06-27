@@ -1,3 +1,4 @@
+"use strict";
 const mongoose = require("mongoose");
 const Schema = mongoose.Schema;
 
@@ -6,7 +7,7 @@ const _Schema = new Schema({
 		type: String,
 		required: true,
 	},
-  date:Date
+	date: Date,
 });
 
 const model = mongoose.model("sensors", _Schema);

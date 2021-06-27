@@ -2,18 +2,37 @@
 
 const express = require("express"),
 	app = express(),
+	http = require("http"),
+	_server = http.createServer(app),
 	port = process.env.PORT || 3000,
 	morgan = require("morgan"),
-	Sensors = require("./Routes/Sensor.Route"),
-	router = require("./network/router")
+	router = require("./network/router"),
+	{ connect, socket } = require("./socket"),
+	ip = require("ip"),
+	mongoose = require('./Database');
+
+_server.listen(port, () => {
+	console.log(
+		"App is running on: ",
+		"http://" + ip.address() + ":" + app.get("port")
+	);
+});
+
+connect(_server);
+
+socket.io.on("connection", (client) => {
+	console.log("Connected client on socket io ->");
+	socket.io.emit("message", "Weeey nooo");
+});
+
+app.use(express.json({limit: '50mb'}));
+app.use(express.urlencoded({limit: '50mb'}));
 
 app.set("port", port);
 
 app.use(morgan("dev"));
 
 app.use(express.urlencoded({ extended: false }));
-
-//
 
 app.use((req, res, next) => {
 	res.header("Access-Control-Allow-Origin", "*");
@@ -26,10 +45,4 @@ app.use((req, res, next) => {
 	next();
 });
 
-app.use(express.json());
-
-app.use("/api/", router);
-
-app.listen(app.get("port"), () => {
-	console.log("Server running in port : ", app.get("port"));
-});
+router(app);
