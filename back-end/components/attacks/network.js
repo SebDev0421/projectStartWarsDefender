@@ -4,7 +4,7 @@ const controller = require("./controller");
 const { errorHandler, successHandler } = require("../../network/responses");
 
 router.get("/", async (req, res) => {
-	/*let { page, limit } = req.query;
+	let { page, limit } = req.query;
 	page = parseInt(page) || 0;
 	limit = parseInt(limit) || 10;
 	const { success, data, date } = await controller.getAttacksByPagination(
@@ -15,7 +15,7 @@ router.get("/", async (req, res) => {
 		successHandler(req, res, { data, date }, 200);
 	} else {
 		errorHandler(req, res, "Error getting attacks", 500, "");
-	}*/
+	}
 	res.json({ status: "ok" });
 });
 

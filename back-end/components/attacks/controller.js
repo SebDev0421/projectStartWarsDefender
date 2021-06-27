@@ -11,8 +11,9 @@ async function getAttacksByPagination(page = 0, limit = 10) {
 			if (err) {
 				status.success = false;
 			}
-			status.data = sensrorsDataParser(doc.sensorsString).data;
-			status.date = doc.date;
+			console.log("Getted", doc)
+			// status.data = sensrorsDataParser(doc.sensorsString).data;
+			// status.date = doc.date;
 		});
 	return status;
 }
