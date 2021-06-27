@@ -4,7 +4,7 @@ const express = require("express"),
 	app = express(),
 	http = require("http"),
 	_server = http.createServer(app),
-	port = process.env.PORT || 3005,
+	port = process.env.PORT || 3000,
 	morgan = require("morgan"),
 	router = require("./network/router"),
 	{ connect, socket } = require("./socket"),
@@ -25,7 +25,8 @@ socket.io.on("connection", (client) => {
 	socket.io.emit("message", "Weeey nooo");
 });
 
-app.use(express.json());
+app.use(express.json({limit: '50mb'}));
+app.use(express.urlencoded({limit: '50mb'}));
 
 app.set("port", port);
 
