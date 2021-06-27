@@ -23,20 +23,9 @@ router.get("/", getDataMiddleware, (req, res) => {
 
 router.post("/", getDataMiddleware, async (req, res) => {
 	const { data, date, originalData } = req;
-	socket.io.emit("data", {data, date});
-	const actives =  [""];
-	// [{
-	// 	sensorNumber: 0,
-	// 	thirtyTimesCounter: 1++,
-	// 	timesThirtyTimesCounter: 1, 
-	// 	zeroTimes:1++,
-	// 	zeroTotalTimes:
-	// }]
-	console.log("Getted data", data, date, originalData);
-	//const { success} = await controller.saveDataSensors(originalData, date);
-	// const parseout = await sensorsDataParser(data);
+	socket.io.emit("data", {data: data.map((x, i) =>({...x, sensor:i}) ), date});
+	const { success} = await controller.saveDataSensors(originalData, date);
 	res.json({ status: "ok" });
-	// controller.
 });
 
 module.exports = router;
