@@ -9,6 +9,7 @@ const mongoose = require("mongoose"),
 			value: "String",
 			type: "String",
 			ship: "String",
+			infromation: "String"
 		},
 		{
 			collection: "alerts",
