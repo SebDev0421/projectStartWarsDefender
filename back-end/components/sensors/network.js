@@ -3,12 +3,11 @@ const express = require("express");
 const router = express.Router();
 const controller = require("./controller");
 const sensorsDataParser = require("../../middlewares/sensrorsDataParser");
-const {socket} = require('../../socket')
 
 const getDataMiddleware = (req, res, next) => {
-	const { data:sensors } = req.body;
+	const { data: sensors } = req.body;
 	const { data, date, originalData } = sensorsDataParser(sensors);
-	console.log('Body', data, date, originalData);
+	console.log("Body", data, date, originalData);
 	req.data = data;
 	req.date = date;
 	req.originalData = originalData;
@@ -16,12 +15,15 @@ const getDataMiddleware = (req, res, next) => {
 };
 
 router.get("/", getDataMiddleware, (req, res) => {
-	res.send("Holaa")
+	res.json({ message: "hello world" });
+	res.send("Holaa");
 });
 
 router.post("/", getDataMiddleware, async (req, res) => {
-	const { data, date, originalData } = req;
-	// const { success } = await controller.saveDataSensors(originalData, date);
+	const { data } = req.body;
+	//const { success} = await controller.saveDataSensors(originalData, date);
+	const parseout = await sensorsDataParser(data);
+	res.json({ status: "ok" });
 	// controller.
 });
 
