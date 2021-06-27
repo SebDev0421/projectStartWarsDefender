@@ -6,11 +6,12 @@ const mongoose = require('mongoose'),
       AlertsSchema = new  Schema({
       	date:"String",
       	sensor: "String",
-      	value: "int",
-      	type:"String"
+      	value: "String",
+      	type:"String",
+      	ship:"String"
       },{
       	collection:"alerts"
-      })
+      }),
 
 AlertsModel = mongoose.model("Alerts",AlertsSchema)
 
