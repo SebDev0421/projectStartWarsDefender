@@ -25,7 +25,7 @@ router.post("/", getDataMiddleware, async (req, res) => {
 	const { data, date, originalData } = req;
 	socket.io.emit("data", {data: data.map((x, i) =>({...x, sensor:i}) ), date});
 	const { success} = await controller.saveDataSensors(originalData, date);
-	res.json({ status: "ok" });
+	res.json({ status: success });
 });
 
 module.exports = router;
