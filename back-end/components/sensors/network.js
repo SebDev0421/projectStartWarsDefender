@@ -3,6 +3,7 @@ const express = require("express");
 const router = express.Router();
 const controller = require("./controller");
 const sensorsDataParser = require("../../middlewares/sensrorsDataParser");
+const sendAlert = require("../../functions/sendAlert")
 
 const getDataMiddleware = (req, res, next) => {
 	const { data: sensors } = req.body;
@@ -20,9 +21,18 @@ router.get("/", getDataMiddleware, (req, res) => {
 });
 
 router.post("/", getDataMiddleware, async (req, res) => {
-	const { data } = req.body;
+	const { data, date, originalData } = req;
+	const actives =  [""];
+	// [{
+	// 	sensorNumber: 0,
+	// 	thirtyTimesCounter: 1++,
+	// 	timesThirtyTimesCounter: 1, 
+	// 	zeroTimes:1++,
+	// 	zeroTotalTimes:
+	// }]
+	console.log("Getted data", data, date, originalData);
 	//const { success} = await controller.saveDataSensors(originalData, date);
-	const parseout = await sensorsDataParser(data);
+	// const parseout = await sensorsDataParser(data);
 	res.json({ status: "ok" });
 	// controller.
 });
