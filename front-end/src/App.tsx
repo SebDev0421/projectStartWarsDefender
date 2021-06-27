@@ -7,8 +7,6 @@ import { BrowserRouter as Router } from "react-router-dom";
 import { Switch } from "react-router-dom";
 import { Route } from "react-router-dom";
 import ThemeProvider from "./context/theme/theme";
-import NavBar from "./components/navbar/Navbar";
-import Drawer from "./components/drawer/Drawer";
 import HomePage from "./pages/Home.page";
 import BattleProvider from "./context/battle/battleState"; 
 
@@ -21,8 +19,6 @@ function App() {
         <ToastContainer />
           <BattleProvider>
             <Router>
-              <NavBar />
-              <Drawer />
               <Switch>
                 <Route path="/" exact>
                   <HomePage />

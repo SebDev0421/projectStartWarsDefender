@@ -1,6 +1,6 @@
 /* /!\ You need to add vendor prefixes in order to render the CSS properly (or simply use http://leaverou.github.io/prefixfree/) /!\ */
 #tridiv {
-  perspective: 500px;
+  perspective: 1000px;
   position: absolute;
   overflow: hidden;
   width: 100%;
@@ -56,13 +56,13 @@
 .scene {
   width: 80em;
   height: 80em;
-  top: 70%;
+  top: 80%;
   left: 50%;
   margin: -40em 0 0 -40em;
-  -webkit-transform: rotateX(-5deg) rotateY(188deg);
-  -moz-transform: rotateX(-5deg) rotateY(188deg);
-  -ms-transform: rotateX(-5deg) rotateY(188deg);
-  transform: rotateX(-5deg) rotateY(188deg);
+  -webkit-transform: rotateX(-12deg) rotateY(180deg);
+  -moz-transform: rotateX(-12deg) rotateY(180deg);
+  -ms-transform: rotateX(-12deg) rotateY(180deg);
+  transform: rotateX(-12deg) rotateY(180deg);
 }
 .shape {
   top: 50%;
@@ -1903,8 +1903,8 @@
   position: fixed;
   top: 0;
   transform: translate(60%, -260%) translateX(-100%);
-  width: 60rem;
-  height: 60rem;
+  width: 40rem;
+  height: 40rem;
   border-radius: 50%;
   animation: ripple 4s linear infinite;
 }
