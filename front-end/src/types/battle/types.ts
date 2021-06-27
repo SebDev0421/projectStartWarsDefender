@@ -1,1 +1,8 @@
 export const GET_SENSORS = "GET_SENSORS";
+export const SHOW_DRAWER = "SHOW_DRAWER";
+export const CLOSE_DRAWER = "CLOSE_DRAWER";
+export const SAVE_SENSORS = "SAVE_SENSORS";
+export const SHOW_ALERT_ENEMY = "SHOW_ALERT_ENEMY";
+export const SHOW_ALERT_SENSOR = "SHOW_ALER_SENSOR";
+export const HIDE_ALERT_ENEMY = "HIDE_ALERT_ENEMY";
+export const HIDE_ALERT_SENSOR = "HIDE_ALERT_SENSOR";
